@@ -1,6 +1,5 @@
 package dev.patika.patika.controller;
 
-
 import dev.patika.patika.model.Student;
 import dev.patika.patika.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

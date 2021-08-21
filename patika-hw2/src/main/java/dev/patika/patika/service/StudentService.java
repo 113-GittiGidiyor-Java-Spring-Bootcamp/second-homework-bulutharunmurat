@@ -43,17 +43,8 @@ public class StudentService implements BaseService<Student> {
     }
 
     @Override
-    public void deleteFromDatabase(Student object) {
-
-    }
-
-    @Override
     public void deleteById(int id) {
         studentDAO.deleteById(id);
     }
 
-    @Override
-    public void updateOnDatabase(Student object, int id) {
-
-    }
 }

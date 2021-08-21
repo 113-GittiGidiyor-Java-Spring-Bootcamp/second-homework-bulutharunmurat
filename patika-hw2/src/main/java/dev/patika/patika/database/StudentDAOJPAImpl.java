@@ -44,24 +44,14 @@ public class StudentDAOJPAImpl implements StudentDAO<Student>{
     }
 
     @Override
-    public void deleteFromDatabase(Student object) {
-
-    }
-
-    @Override
     @Transactional
     public void deleteById(int id) {
         Student student = this.findById(id);
         if(student == null){
             logger.error("There is no student with id: " + id);
         }
-        
+
         entityManager.remove(student);
-
     }
 
-    @Override
-    public void updateOnDatabase(Student object, int id) {
-
-    }
 }

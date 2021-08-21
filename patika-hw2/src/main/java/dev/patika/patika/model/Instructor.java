@@ -1,23 +1,23 @@
 package dev.patika.patika.model;
 
+
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Student {
-
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String address;
-    private LocalDate birthDate;
-    private String gender;
+    private String phoneNumber;
 
-    @ManyToMany
+
+    @OneToMany(mappedBy = "instructor")
     private List<Course> courseList = new ArrayList<>();
 
     public List<Course> getCourseList() {
@@ -28,23 +28,13 @@ public class Student {
         this.courseList = courseList;
     }
 
-    public Student(Integer id, String name, String address, LocalDate birthDate, String gender) {
-        this.id = id;
+    public Instructor(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
-        this.birthDate = birthDate;
-        this.gender = gender;
+        this.phoneNumber = phoneNumber;
     }
 
-    public Student() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Instructor() {
     }
 
     public String getName() {
@@ -63,43 +53,34 @@ public class Student {
         this.address = address;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(id, student.id);
+        Instructor that = (Instructor) o;
+        return Objects.equals(name, that.name) && Objects.equals(address, that.address) &&
+                Objects.equals(phoneNumber, that.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(name, address, phoneNumber);
     }
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "Instructor{" +
+                "name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", birthDate=" + birthDate +
-                ", gender='" + gender + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

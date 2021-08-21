@@ -10,7 +10,5 @@ public interface BaseService <T>{
     T findById(int id);
     T save(T object);
     T update(T object);
-    void deleteFromDatabase(T object);
     void deleteById(int id);
-    void updateOnDatabase(T object, int id);
 }

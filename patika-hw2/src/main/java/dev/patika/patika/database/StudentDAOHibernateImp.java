@@ -44,17 +44,8 @@ public class StudentDAOHibernateImp implements StudentDAO<Student>{
     }
 
     @Override
-    public void deleteFromDatabase(Student object) {
-
-    }
-
-    @Override
     public void deleteById(int id) {
 
     }
 
-    @Override
-    public void updateOnDatabase(Student object, int id) {
-
-    }
 }
