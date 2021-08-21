@@ -39,6 +39,6 @@ public class InstructorService implements BaseService<Instructor>{
 
     @Override
     public void deleteById(int id) {
-
+        instructorDAO.deleteById(id);
     }
 }

@@ -48,7 +48,7 @@ public class CourseDAOJPAImpl implements CourseDAO<Course>{
     public void deleteById(int id) {
         Course course = this.findById(id);
         if(course == null){
-            logger.error("There is no student with id: " + id);
+            logger.error("There is no course with id: " + id);
         }
         entityManager.remove(course);
     }

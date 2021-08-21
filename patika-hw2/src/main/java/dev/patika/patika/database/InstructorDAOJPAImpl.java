@@ -1,5 +1,6 @@
 package dev.patika.patika.database;
 
+import dev.patika.patika.model.Course;
 import dev.patika.patika.model.Instructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +62,12 @@ public class InstructorDAOJPAImpl implements InstructorDAO<Instructor>{
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-
+        Instructor instructor= this.findById(id);
+        if(instructor == null){
+            logger.error("There is no instructor with id: " + id);
+        }
+        entityManager.remove(instructor);
     }
 }

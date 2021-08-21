@@ -31,12 +31,18 @@ public class InstructorController {
     }
 
     @PostMapping("/instructors")
-    public Instructor saveCourse(@RequestBody Instructor instructor){
+    public Instructor saveInstructor(@RequestBody Instructor instructor){
         return instructorService.save(instructor);
     }
 
     @PutMapping("/instructors")
-    public Instructor updateCourse(@RequestBody Instructor instructor){
+    public Instructor updateInstructor(@RequestBody Instructor instructor){
         return instructorService.update(instructor);
+    }
+
+    @DeleteMapping("/instructors/{id}")
+    public String deleteInstructorById(@PathVariable int id){
+        instructorService.deleteById(id);
+        return "instructor with "+ id + " id deleted";
     }
 }
