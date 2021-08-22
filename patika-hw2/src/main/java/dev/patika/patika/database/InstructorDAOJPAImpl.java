@@ -57,7 +57,6 @@ public class InstructorDAOJPAImpl implements InstructorDAO<Instructor>{
             entityManager.close();
         }
 
-
         return foundInstructor;
     }
 
