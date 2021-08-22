@@ -1,6 +1,8 @@
 package dev.patika.patika.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class Instructor {
 
 
     @OneToMany(mappedBy = "instructor")
+    @JsonIgnore
     private List<Course> courseList = new ArrayList<>();
 
     public List<Course> getCourseList() {

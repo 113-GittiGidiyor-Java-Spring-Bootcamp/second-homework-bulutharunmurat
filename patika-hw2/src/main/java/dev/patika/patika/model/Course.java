@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -15,16 +16,16 @@ public class Course {
     private Float creditScore;
 
     @ManyToMany(mappedBy = "courseList")
-    private List<Student> studentList = new ArrayList<>();
+    private Set<Student> studentList;
 
     @ManyToOne
     private Instructor instructor;
 
-    public List<Student> getStudentList() {
+    public Set<Student> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
+    public void setStudentList(Set<Student> studentList) {
         this.studentList = studentList;
     }
 

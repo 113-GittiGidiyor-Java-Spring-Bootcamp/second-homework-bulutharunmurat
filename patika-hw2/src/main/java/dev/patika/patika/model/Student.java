@@ -1,10 +1,13 @@
 package dev.patika.patika.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -18,13 +21,18 @@ public class Student {
     private String gender;
 
     @ManyToMany
-    private List<Course> courseList = new ArrayList<>();
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @JsonIgnore
+    private Set<Course> courseList;
 
-    public List<Course> getCourseList() {
+    public Set<Course> getCourseList() {
         return courseList;
     }
 
-    public void setCourseList(List<Course> courseList) {
+    public void setCourseList(Set<Course> courseList) {
         this.courseList = courseList;
     }
 
