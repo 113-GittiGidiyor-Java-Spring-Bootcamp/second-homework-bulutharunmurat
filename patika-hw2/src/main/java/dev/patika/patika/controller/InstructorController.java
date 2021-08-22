@@ -1,7 +1,8 @@
 package dev.patika.patika.controller;
 
-import dev.patika.patika.model.Course;
 import dev.patika.patika.model.Instructor;
+import dev.patika.patika.model.PermanentInstructor;
+import dev.patika.patika.model.VisitingResearcher;
 import dev.patika.patika.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,16 @@ public class InstructorController {
     @PostMapping("/instructors")
     public Instructor saveInstructor(@RequestBody Instructor instructor){
         return instructorService.save(instructor);
+    }
+
+    @PostMapping("/instructors/visitingResearcher")
+    public Instructor saveVisitingResearcher(@RequestBody VisitingResearcher visitingResearcher){
+        return instructorService.save(visitingResearcher);
+    }
+
+    @PostMapping("/instructors/permanentInstructor")
+    public Instructor savePermanentInstructor(@RequestBody PermanentInstructor permanentInstructor){
+        return instructorService.save(permanentInstructor);
     }
 
     @PutMapping("/instructors")
